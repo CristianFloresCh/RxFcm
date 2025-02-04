@@ -3,13 +3,15 @@ apply plugin: 'com.android.library'
 //group='com.github.VictorAlbertos'
 
 android {
-    compileSdkVersion 34
-    compileSdk 34
+    //noinspection GradleDependency
+    compileSdkVersion 30
+    //noinspection GradleDependency
+    compileSdk 30
     //buildToolsVersion '26.0.2'
     defaultConfig {
         minSdkVersion 19
         //noinspection ExpiredTargetSdkVersion
-        targetSdkVersion 34
+        targetSdkVersion 30
     }
     buildTypes {
         release {
