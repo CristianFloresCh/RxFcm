@@ -24,10 +24,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        targetCompatibility java_version
-        sourceCompatibility java_version
-    }
     namespace 'victoralbertos.io.rxfcm'
     //lint {
     //    abortOnError false
