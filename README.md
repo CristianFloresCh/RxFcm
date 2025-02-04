@@ -1,6 +1,3 @@
-⚠️ Deprecated: this library is no longer mantained. ⚠️
-
-
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RxFcm-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3912)
 
 # RxFcm
@@ -113,12 +110,13 @@ public class AppFcmReceiverUIBackground implements FcmReceiverUIBackground { �
 #### FcmReceiverUIForeground
 `FcmReceiverUIForeground` implementation will be called when a notification is received and the application is in the foreground. The implementation class must be an `Activity` or an `android.support.v4.app.Fragment`. `FcmReceiverUIForeground` exposes a method called `matchesTarget()`, which receives an string (the value of the rx_fcm_key_target node payload notification) and forces to the implementation class to return a boolean. 
 
-If the current `Activity` or visible `Fragment` `matchesTarget()` method returns true, `onTargetNotification()` method will be called, otherwise `onMismatchTargetNotification()` method will be called. 
+If the current `Activity` or visible `Fragment` `matchesTarget()` method returns true, `onTargetNotification()` method will be called, otherwise `onMismatchTargetNotification()` method will be called.
 
 ```java
-public abstract class BaseFragment extends android.support.v4.app.Fragment implements FcmReceiverUIForeground {      
-	
-    @Override public void onMismatchTargetNotification(Observable<Message> oMessage) {
+public abstract class BaseFragment extends androidx.core.app.Fragment implements FcmReceiverUIForeground {  
+
+    @Override
+    public void onMismatchTargetNotification(Observable<Message> oMessage) {
         oMessage.subscribe(message -> {
             showAlert(message);
         });
@@ -144,15 +142,18 @@ public class FragmentIssues extends BaseFragment {  
 ```
 
 ```java
-public class FragmentSupplies extends android.support.v4.app.Fragment implements FcmReceiverUIForeground {      
-	
-    @Override public void onTargetNotification(Observable<Message> oMessage) {
+public class FragmentSupplies extends androidx.core.app.Fragment implements FcmReceiverUIForeground {  
+
+    @Override
+    public void onTargetNotification(Observable<Message> oMessage) {
         oMessage.subscribe(message -> {
             notificationAdapter.notifyDataSetChanged();
         });
     }     
 	  
-	@Override public boolean matchesTarget(String key) {
+
+    @Override
+    public boolean matchesTarget(String key) {
         return "supplies".equals(key);
     }
 }

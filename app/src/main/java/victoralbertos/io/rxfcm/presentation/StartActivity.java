@@ -2,7 +2,7 @@ package victoralbertos.io.rxfcm.presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import victoralbertos.io.rxfcm.R;
 import victoralbertos.io.rxfcm.presentation.nested_fragment.HostActivityNestedFragment;

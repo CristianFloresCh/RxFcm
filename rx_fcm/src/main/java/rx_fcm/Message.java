@@ -18,7 +18,7 @@ package rx_fcm;
 
 import android.app.Application;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * Entity received as the message on notifications events.

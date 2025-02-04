@@ -16,11 +16,17 @@
 
 package rx_fcm.internal;
 
-import com.google.firebase.iid.FirebaseInstanceIdService;
+//import com.google.firebase.iid.FirebaseInstanceIdService;
+import com.google.firebase.messaging.FirebaseMessagingService;
 
-public class AppInstanceIDListenerService extends FirebaseInstanceIdService {
+public class AppInstanceIDListenerService extends FirebaseMessagingService {
 
-    @Override public void onTokenRefresh() {
+    /*@Override public void onTokenRefresh() {
+        RxFcm.Notifications.init(getApplication());
+        RxFcm.Notifications.onTokenRefreshed();
+    }*/
+    @Override
+    public void onNewToken(String token){
         RxFcm.Notifications.init(getApplication());
         RxFcm.Notifications.onTokenRefreshed();
     }

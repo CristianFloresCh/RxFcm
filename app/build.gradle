@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
+//apply plugin: 'me.tatarka.retrolambda'
 
 buildscript {
     repositories {
@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+        //classpath 'me.tatarka:gradle-retrolambda:3.2.5'
     }
 }
 
@@ -17,16 +17,17 @@ repositories {
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
-
+    compileSdkVersion 34
+    compileSdk 34
     defaultConfig {
         applicationId "victoralbertos.io.rxfcm"
-        minSdkVersion 17
-        targetSdkVersion 26
+        minSdkVersion 19
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -38,28 +39,31 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
-    lintOptions {
+    namespace 'victoralbertos.io.rxfcm'
+    lint {
         abortOnError false
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':rx_fcm')
-    compile 'com.android.support:appcompat-v7:24.2.0'
-    compile 'com.google.firebase:firebase-core:11.6.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':rx_fcm')
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation platform('com.google.firebase:firebase-bom:32.7.3')
+    //implementation 'com.google.firebase:firebase-core'
+    //implementation 'com.google.firebase:firebase-core:11.6.0'
 
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
 
-    compile 'com.android.support:design:24.2.0'
-    compile 'com.android.support:support-annotations:24.2.0'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.annotation:annotation:1.7.1'
 
-    androidTestCompile "com.android.support.test:runner:0.5"
-    androidTestCompile "com.android.support.test:rules:0.5"
-    androidTestCompile("com.android.support.test.espresso:espresso-contrib:2.2.2") {
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.5.1') {
         exclude module: 'support-annotations'
         exclude module: 'support-v4'
         exclude module: 'support-v13'
@@ -67,6 +71,7 @@ dependencies {
         exclude module: 'appcompat-v7'
         exclude module: 'design'
     }
+    implementation 'com.android.support:multidex:1.0.3'
 }
 
 configurations.all {

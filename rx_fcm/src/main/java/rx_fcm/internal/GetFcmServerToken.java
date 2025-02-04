@@ -16,11 +16,18 @@
 
 package rx_fcm.internal;
 
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.android.gms.tasks.OnSuccessListener;
+//import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 class GetFcmServerToken {
 
     String retrieve() {
-        return FirebaseInstanceId.getInstance().getToken();
+        //return FirebaseInstanceId.getInstance().getToken();
+        return FirebaseMessaging.getInstance().getToken().addOnSuccessListener(new OnSuccessListener<String>() {
+            @Override
+            public void onSuccess(String s) {
+            }
+        }).getResult();
     }
 }

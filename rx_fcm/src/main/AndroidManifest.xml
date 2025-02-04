@@ -1,19 +1,18 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="victoralbertos.io.rx_fcm">
-
-    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="16" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application>
 
         <service
-            android:name="rx_fcm.internal.AppFcmListenerService">
+            android:name="rx_fcm.internal.AppFcmListenerService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <service
-            android:name="rx_fcm.internal.AppInstanceIDListenerService">
+            android:name="rx_fcm.internal.AppInstanceIDListenerService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
